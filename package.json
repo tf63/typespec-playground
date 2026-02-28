@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"typecheck": "tsc --noEmit --project configs/tsconfig/tsconfig.test.json",
+		"typecheck": "tsc --noEmit",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint . --write",
 		"format": "biome format . && prettier .",
@@ -13,13 +13,16 @@
 		"check:fix": "biome check . --write && prettier --write .",
 		"prepare": "lefthook install",
 		"typespec": "tsp",
+		"typespec:compile": "tsp compile .",
 		"swagger": "pnpm swagger:build && pnpm swagger:serve",
 		"swagger:build": "openapi-generate-html -i tsp-output/schema/openapi.yaml --theme light --ui stoplight -o docs/api/v1/stoplight/index.html",
-		"swagger:serve": "serve -l 6608 docs/api/v1/stoplight"
+		"swagger:serve": "serve -l 6608 docs/api/v1/stoplight",
+		"orval": "orval --config ./orval.config.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.4",
 		"@commitlint/cli": "19.8.1",
+		"@faker-js/faker": "10.3.0",
 		"@types/node": "22.13.14",
 		"@typespec/compiler": "1.9.0",
 		"@typespec/http": "1.9.0",
@@ -27,7 +30,9 @@
 		"@typespec/openapi3": "1.9.0",
 		"@typespec/rest": "0.79.0",
 		"lefthook": "1.13.0",
-		"openapi-generate-html": "^0.5.3",
+		"msw": "2.12.10",
+		"openapi-generate-html": "0.5.3",
+		"orval": "8.5.0",
 		"plop": "4.0.4",
 		"prettier": "3.6.2",
 		"serve": "14.2.5",
@@ -35,5 +40,8 @@
 		"typescript": "5.9.2",
 		"vite": "7.1.5"
 	},
-	"packageManager": "pnpm@10.24.0"
+	"packageManager": "pnpm@10.24.0",
+	"dependencies": {
+		"zod": "4.3.6"
+	}
 }
