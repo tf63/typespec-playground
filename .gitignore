@@ -74,3 +74,5 @@ playwright/.cache/
 # Default TypeSpec output
 tsp-output/
 dist/
+
+/docs/api/v1/stoplight/

@@ -12,7 +12,10 @@
 		"check": "biome check . && prettier .",
 		"check:fix": "biome check . --write && prettier --write .",
 		"prepare": "lefthook install",
-		"typespec": "tsp"
+		"typespec": "tsp",
+		"swagger": "pnpm swagger:build && pnpm swagger:serve",
+		"swagger:build": "openapi-generate-html -i tsp-output/schema/openapi.yaml --theme light --ui stoplight -o docs/api/v1/stoplight/index.html",
+		"swagger:serve": "serve -l 6608 docs/api/v1/stoplight"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.4",
@@ -24,6 +27,7 @@
 		"@typespec/openapi3": "1.9.0",
 		"@typespec/rest": "0.79.0",
 		"lefthook": "1.13.0",
+		"openapi-generate-html": "^0.5.3",
 		"plop": "4.0.4",
 		"prettier": "3.6.2",
 		"serve": "14.2.5",
