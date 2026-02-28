@@ -32,5 +32,34 @@
 	"[vue]": {},
 	"[svelte]": {},
 	"[xml]": {},
-	"[handlebars]": {}
+	"[handlebars]": {},
+	"[go]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[go.mod]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[go.work]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"go.lintTool": "golangci-lint",
+	"go.lintFlags": ["--path-mode=abs", "--fast-only"],
+	"go.lintOnSave": "package",
+	"go.formatTool": "custom",
+	"go.formatFlags": ["fmt", "--stdin"],
+	"go.toolsManagement.checkForUpdates": "local",
+	"go.useLanguageServer": true,
+	"go.goroot": "~/.local/share/mise/installs/go/1.26.0",
+	"go.alternateTools": {
+		"customFormatter": "~/.local/share/mise/installs/go/1.26.0/bin/golangci-lint",
+		"gopls": "~/.local/share/mise/installs/go/1.26.0/bin/gopls"
+	},
+	"go.inlayHints.ignoredError": true,
+	"go.inlayHints.assignVariableTypes": true,
+	"go.inlayHints.constantValues": true,
+	"go.inlayHints.functionTypeParameters": true,
+	"go.inlayHints.parameterNames": true,
+	"go.inlayHints.compositeLiteralFields": true,
+	"go.inlayHints.compositeLiteralTypes": true,
+	"go.inlayHints.rangeVariableTypes": true
 }
