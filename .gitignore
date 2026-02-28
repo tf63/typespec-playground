@@ -70,3 +70,7 @@ playwright/.cache/
 
 # kiri
 .kiri/
+
+# Default TypeSpec output
+tsp-output/
+dist/
