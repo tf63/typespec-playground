@@ -13,7 +13,7 @@
 		"check:fix": "biome check . --write && prettier --write .",
 		"prepare": "lefthook install",
 		"typespec": "tsp",
-		"typespec:compile": "tsp compile .",
+		"typespec:compile": "tsp compile ./typespec",
 		"swagger": "pnpm swagger:build && pnpm swagger:serve",
 		"swagger:build": "openapi-generate-html -i tsp-output/schema/openapi.yaml --theme light --ui stoplight -o docs/api/v1/stoplight/index.html",
 		"swagger:serve": "serve -l 6608 docs/api/v1/stoplight",
