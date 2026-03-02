@@ -14,23 +14,23 @@ import (
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
 
-	// (GET /widgets)
-	WidgetsList(c *gin.Context)
+	// (GET /users)
+	UsersList(c *gin.Context)
 
-	// (POST /widgets)
-	WidgetsCreate(c *gin.Context)
+	// (POST /users)
+	UsersCreate(c *gin.Context)
 
-	// (DELETE /widgets/{id})
-	WidgetsDelete(c *gin.Context, id string)
+	// (DELETE /users/{id})
+	UsersDelete(c *gin.Context, id string)
 
-	// (GET /widgets/{id})
-	WidgetsRead(c *gin.Context, id string)
+	// (GET /users/{id})
+	UsersRead(c *gin.Context, id string)
 
-	// (PATCH /widgets/{id})
-	WidgetsUpdate(c *gin.Context, id string)
+	// (PATCH /users/{id})
+	UsersUpdate(c *gin.Context, id string)
 
-	// (POST /widgets/{id}/analyze)
-	WidgetsAnalyze(c *gin.Context, id string)
+	// (GET /users/{id}/profile)
+	UsersGetProfile(c *gin.Context, id string)
 }
 
 // ServerInterfaceWrapper converts contexts to parameters.
@@ -42,8 +42,8 @@ type ServerInterfaceWrapper struct {
 
 type MiddlewareFunc func(c *gin.Context)
 
-// WidgetsList operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsList(c *gin.Context) {
+// UsersList operation middleware
+func (siw *ServerInterfaceWrapper) UsersList(c *gin.Context) {
 
 	for _, middleware := range siw.HandlerMiddlewares {
 		middleware(c)
@@ -52,11 +52,11 @@ func (siw *ServerInterfaceWrapper) WidgetsList(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsList(c)
+	siw.Handler.UsersList(c)
 }
 
-// WidgetsCreate operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsCreate(c *gin.Context) {
+// UsersCreate operation middleware
+func (siw *ServerInterfaceWrapper) UsersCreate(c *gin.Context) {
 
 	for _, middleware := range siw.HandlerMiddlewares {
 		middleware(c)
@@ -65,11 +65,11 @@ func (siw *ServerInterfaceWrapper) WidgetsCreate(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsCreate(c)
+	siw.Handler.UsersCreate(c)
 }
 
-// WidgetsDelete operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsDelete(c *gin.Context) {
+// UsersDelete operation middleware
+func (siw *ServerInterfaceWrapper) UsersDelete(c *gin.Context) {
 
 	var err error
 
@@ -89,11 +89,11 @@ func (siw *ServerInterfaceWrapper) WidgetsDelete(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsDelete(c, id)
+	siw.Handler.UsersDelete(c, id)
 }
 
-// WidgetsRead operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsRead(c *gin.Context) {
+// UsersRead operation middleware
+func (siw *ServerInterfaceWrapper) UsersRead(c *gin.Context) {
 
 	var err error
 
@@ -113,11 +113,11 @@ func (siw *ServerInterfaceWrapper) WidgetsRead(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsRead(c, id)
+	siw.Handler.UsersRead(c, id)
 }
 
-// WidgetsUpdate operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsUpdate(c *gin.Context) {
+// UsersUpdate operation middleware
+func (siw *ServerInterfaceWrapper) UsersUpdate(c *gin.Context) {
 
 	var err error
 
@@ -137,11 +137,11 @@ func (siw *ServerInterfaceWrapper) WidgetsUpdate(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsUpdate(c, id)
+	siw.Handler.UsersUpdate(c, id)
 }
 
-// WidgetsAnalyze operation middleware
-func (siw *ServerInterfaceWrapper) WidgetsAnalyze(c *gin.Context) {
+// UsersGetProfile operation middleware
+func (siw *ServerInterfaceWrapper) UsersGetProfile(c *gin.Context) {
 
 	var err error
 
@@ -161,7 +161,7 @@ func (siw *ServerInterfaceWrapper) WidgetsAnalyze(c *gin.Context) {
 		}
 	}
 
-	siw.Handler.WidgetsAnalyze(c, id)
+	siw.Handler.UsersGetProfile(c, id)
 }
 
 // GinServerOptions provides options for the Gin server.
@@ -191,10 +191,10 @@ func RegisterHandlersWithOptions(router gin.IRouter, si ServerInterface, options
 		ErrorHandler:       errorHandler,
 	}
 
-	router.GET(options.BaseURL+"/widgets", wrapper.WidgetsList)
-	router.POST(options.BaseURL+"/widgets", wrapper.WidgetsCreate)
-	router.DELETE(options.BaseURL+"/widgets/:id", wrapper.WidgetsDelete)
-	router.GET(options.BaseURL+"/widgets/:id", wrapper.WidgetsRead)
-	router.PATCH(options.BaseURL+"/widgets/:id", wrapper.WidgetsUpdate)
-	router.POST(options.BaseURL+"/widgets/:id/analyze", wrapper.WidgetsAnalyze)
+	router.GET(options.BaseURL+"/users", wrapper.UsersList)
+	router.POST(options.BaseURL+"/users", wrapper.UsersCreate)
+	router.DELETE(options.BaseURL+"/users/:id", wrapper.UsersDelete)
+	router.GET(options.BaseURL+"/users/:id", wrapper.UsersRead)
+	router.PATCH(options.BaseURL+"/users/:id", wrapper.UsersUpdate)
+	router.GET(options.BaseURL+"/users/:id/profile", wrapper.UsersGetProfile)
 }

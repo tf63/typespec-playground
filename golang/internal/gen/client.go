@@ -89,31 +89,31 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 
 // The interface specification for the client above.
 type ClientInterface interface {
-	// WidgetsList request
-	WidgetsList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersList request
+	UsersList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// WidgetsCreateWithBody request with any body
-	WidgetsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersCreateWithBody request with any body
+	UsersCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	WidgetsCreate(ctx context.Context, body WidgetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UsersCreate(ctx context.Context, body UsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// WidgetsDelete request
-	WidgetsDelete(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersDelete request
+	UsersDelete(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// WidgetsRead request
-	WidgetsRead(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersRead request
+	UsersRead(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// WidgetsUpdateWithBody request with any body
-	WidgetsUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersUpdateWithBody request with any body
+	UsersUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	WidgetsUpdateWithApplicationMergePatchPlusJSONBody(ctx context.Context, id string, body WidgetsUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UsersUpdateWithApplicationMergePatchPlusJSONBody(ctx context.Context, id string, body UsersUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// WidgetsAnalyze request
-	WidgetsAnalyze(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// UsersGetProfile request
+	UsersGetProfile(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
-func (c *Client) WidgetsList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsListRequest(c.Server)
+func (c *Client) UsersList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersListRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -124,8 +124,8 @@ func (c *Client) WidgetsList(ctx context.Context, reqEditors ...RequestEditorFn)
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsCreateRequestWithBody(c.Server, contentType, body)
+func (c *Client) UsersCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersCreateRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -136,8 +136,8 @@ func (c *Client) WidgetsCreateWithBody(ctx context.Context, contentType string, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsCreate(ctx context.Context, body WidgetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsCreateRequest(c.Server, body)
+func (c *Client) UsersCreate(ctx context.Context, body UsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersCreateRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -148,8 +148,8 @@ func (c *Client) WidgetsCreate(ctx context.Context, body WidgetsCreateJSONReques
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsDelete(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsDeleteRequest(c.Server, id)
+func (c *Client) UsersDelete(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersDeleteRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -160,8 +160,8 @@ func (c *Client) WidgetsDelete(ctx context.Context, id string, reqEditors ...Req
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsRead(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsReadRequest(c.Server, id)
+func (c *Client) UsersRead(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersReadRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -172,8 +172,8 @@ func (c *Client) WidgetsRead(ctx context.Context, id string, reqEditors ...Reque
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsUpdateRequestWithBody(c.Server, id, contentType, body)
+func (c *Client) UsersUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersUpdateRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -184,8 +184,8 @@ func (c *Client) WidgetsUpdateWithBody(ctx context.Context, id string, contentTy
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsUpdateWithApplicationMergePatchPlusJSONBody(ctx context.Context, id string, body WidgetsUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsUpdateRequestWithApplicationMergePatchPlusJSONBody(c.Server, id, body)
+func (c *Client) UsersUpdateWithApplicationMergePatchPlusJSONBody(ctx context.Context, id string, body UsersUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersUpdateRequestWithApplicationMergePatchPlusJSONBody(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -196,8 +196,8 @@ func (c *Client) WidgetsUpdateWithApplicationMergePatchPlusJSONBody(ctx context.
 	return c.Client.Do(req)
 }
 
-func (c *Client) WidgetsAnalyze(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewWidgetsAnalyzeRequest(c.Server, id)
+func (c *Client) UsersGetProfile(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUsersGetProfileRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}
@@ -208,8 +208,8 @@ func (c *Client) WidgetsAnalyze(ctx context.Context, id string, reqEditors ...Re
 	return c.Client.Do(req)
 }
 
-// NewWidgetsListRequest generates requests for WidgetsList
-func NewWidgetsListRequest(server string) (*http.Request, error) {
+// NewUsersListRequest generates requests for UsersList
+func NewUsersListRequest(server string) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -217,7 +217,7 @@ func NewWidgetsListRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets")
+	operationPath := fmt.Sprintf("/users")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -235,19 +235,19 @@ func NewWidgetsListRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewWidgetsCreateRequest calls the generic WidgetsCreate builder with application/json body
-func NewWidgetsCreateRequest(server string, body WidgetsCreateJSONRequestBody) (*http.Request, error) {
+// NewUsersCreateRequest calls the generic UsersCreate builder with application/json body
+func NewUsersCreateRequest(server string, body UsersCreateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewWidgetsCreateRequestWithBody(server, "application/json", bodyReader)
+	return NewUsersCreateRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewWidgetsCreateRequestWithBody generates requests for WidgetsCreate with any type of body
-func NewWidgetsCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUsersCreateRequestWithBody generates requests for UsersCreate with any type of body
+func NewUsersCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -255,7 +255,7 @@ func NewWidgetsCreateRequestWithBody(server string, contentType string, body io.
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets")
+	operationPath := fmt.Sprintf("/users")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -275,8 +275,8 @@ func NewWidgetsCreateRequestWithBody(server string, contentType string, body io.
 	return req, nil
 }
 
-// NewWidgetsDeleteRequest generates requests for WidgetsDelete
-func NewWidgetsDeleteRequest(server string, id string) (*http.Request, error) {
+// NewUsersDeleteRequest generates requests for UsersDelete
+func NewUsersDeleteRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -291,7 +291,7 @@ func NewWidgetsDeleteRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets/%s", pathParam0)
+	operationPath := fmt.Sprintf("/users/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -309,8 +309,8 @@ func NewWidgetsDeleteRequest(server string, id string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewWidgetsReadRequest generates requests for WidgetsRead
-func NewWidgetsReadRequest(server string, id string) (*http.Request, error) {
+// NewUsersReadRequest generates requests for UsersRead
+func NewUsersReadRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -325,7 +325,7 @@ func NewWidgetsReadRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets/%s", pathParam0)
+	operationPath := fmt.Sprintf("/users/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -343,19 +343,19 @@ func NewWidgetsReadRequest(server string, id string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewWidgetsUpdateRequestWithApplicationMergePatchPlusJSONBody calls the generic WidgetsUpdate builder with application/merge-patch+json body
-func NewWidgetsUpdateRequestWithApplicationMergePatchPlusJSONBody(server string, id string, body WidgetsUpdateApplicationMergePatchPlusJSONRequestBody) (*http.Request, error) {
+// NewUsersUpdateRequestWithApplicationMergePatchPlusJSONBody calls the generic UsersUpdate builder with application/merge-patch+json body
+func NewUsersUpdateRequestWithApplicationMergePatchPlusJSONBody(server string, id string, body UsersUpdateApplicationMergePatchPlusJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewWidgetsUpdateRequestWithBody(server, id, "application/merge-patch+json", bodyReader)
+	return NewUsersUpdateRequestWithBody(server, id, "application/merge-patch+json", bodyReader)
 }
 
-// NewWidgetsUpdateRequestWithBody generates requests for WidgetsUpdate with any type of body
-func NewWidgetsUpdateRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+// NewUsersUpdateRequestWithBody generates requests for UsersUpdate with any type of body
+func NewUsersUpdateRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -370,7 +370,7 @@ func NewWidgetsUpdateRequestWithBody(server string, id string, contentType strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets/%s", pathParam0)
+	operationPath := fmt.Sprintf("/users/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -390,8 +390,8 @@ func NewWidgetsUpdateRequestWithBody(server string, id string, contentType strin
 	return req, nil
 }
 
-// NewWidgetsAnalyzeRequest generates requests for WidgetsAnalyze
-func NewWidgetsAnalyzeRequest(server string, id string) (*http.Request, error) {
+// NewUsersGetProfileRequest generates requests for UsersGetProfile
+func NewUsersGetProfileRequest(server string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -406,7 +406,7 @@ func NewWidgetsAnalyzeRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/widgets/%s/analyze", pathParam0)
+	operationPath := fmt.Sprintf("/users/%s/profile", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -416,7 +416,7 @@ func NewWidgetsAnalyzeRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -467,38 +467,38 @@ func WithBaseURL(baseURL string) ClientOption {
 
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
-	// WidgetsListWithResponse request
-	WidgetsListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*WidgetsListResponse, error)
+	// UsersListWithResponse request
+	UsersListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*UsersListResponse, error)
 
-	// WidgetsCreateWithBodyWithResponse request with any body
-	WidgetsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*WidgetsCreateResponse, error)
+	// UsersCreateWithBodyWithResponse request with any body
+	UsersCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UsersCreateResponse, error)
 
-	WidgetsCreateWithResponse(ctx context.Context, body WidgetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*WidgetsCreateResponse, error)
+	UsersCreateWithResponse(ctx context.Context, body UsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*UsersCreateResponse, error)
 
-	// WidgetsDeleteWithResponse request
-	WidgetsDeleteWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsDeleteResponse, error)
+	// UsersDeleteWithResponse request
+	UsersDeleteWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersDeleteResponse, error)
 
-	// WidgetsReadWithResponse request
-	WidgetsReadWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsReadResponse, error)
+	// UsersReadWithResponse request
+	UsersReadWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersReadResponse, error)
 
-	// WidgetsUpdateWithBodyWithResponse request with any body
-	WidgetsUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*WidgetsUpdateResponse, error)
+	// UsersUpdateWithBodyWithResponse request with any body
+	UsersUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UsersUpdateResponse, error)
 
-	WidgetsUpdateWithApplicationMergePatchPlusJSONBodyWithResponse(ctx context.Context, id string, body WidgetsUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*WidgetsUpdateResponse, error)
+	UsersUpdateWithApplicationMergePatchPlusJSONBodyWithResponse(ctx context.Context, id string, body UsersUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*UsersUpdateResponse, error)
 
-	// WidgetsAnalyzeWithResponse request
-	WidgetsAnalyzeWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsAnalyzeResponse, error)
+	// UsersGetProfileWithResponse request
+	UsersGetProfileWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersGetProfileResponse, error)
 }
 
-type WidgetsListResponse struct {
+type UsersListResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WidgetList
+	JSON200      *UserList
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsListResponse) Status() string {
+func (r UsersListResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -506,22 +506,22 @@ func (r WidgetsListResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsListResponse) StatusCode() int {
+func (r UsersListResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type WidgetsCreateResponse struct {
+type UsersCreateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *Widget
+	JSON200      *User
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsCreateResponse) Status() string {
+func (r UsersCreateResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -529,21 +529,21 @@ func (r WidgetsCreateResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsCreateResponse) StatusCode() int {
+func (r UsersCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type WidgetsDeleteResponse struct {
+type UsersDeleteResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsDeleteResponse) Status() string {
+func (r UsersDeleteResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -551,22 +551,22 @@ func (r WidgetsDeleteResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsDeleteResponse) StatusCode() int {
+func (r UsersDeleteResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type WidgetsReadResponse struct {
+type UsersReadResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *Widget
+	JSON200      *User
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsReadResponse) Status() string {
+func (r UsersReadResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -574,22 +574,22 @@ func (r WidgetsReadResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsReadResponse) StatusCode() int {
+func (r UsersReadResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type WidgetsUpdateResponse struct {
+type UsersUpdateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *Widget
+	JSON200      *User
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsUpdateResponse) Status() string {
+func (r UsersUpdateResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -597,22 +597,22 @@ func (r WidgetsUpdateResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsUpdateResponse) StatusCode() int {
+func (r UsersUpdateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type WidgetsAnalyzeResponse struct {
+type UsersGetProfileResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *AnalyzeResult
+	JSON200      *UserProfile
 	JSONDefault  *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r WidgetsAnalyzeResponse) Status() string {
+func (r UsersGetProfileResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -620,99 +620,99 @@ func (r WidgetsAnalyzeResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r WidgetsAnalyzeResponse) StatusCode() int {
+func (r UsersGetProfileResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-// WidgetsListWithResponse request returning *WidgetsListResponse
-func (c *ClientWithResponses) WidgetsListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*WidgetsListResponse, error) {
-	rsp, err := c.WidgetsList(ctx, reqEditors...)
+// UsersListWithResponse request returning *UsersListResponse
+func (c *ClientWithResponses) UsersListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*UsersListResponse, error) {
+	rsp, err := c.UsersList(ctx, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsListResponse(rsp)
+	return ParseUsersListResponse(rsp)
 }
 
-// WidgetsCreateWithBodyWithResponse request with arbitrary body returning *WidgetsCreateResponse
-func (c *ClientWithResponses) WidgetsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*WidgetsCreateResponse, error) {
-	rsp, err := c.WidgetsCreateWithBody(ctx, contentType, body, reqEditors...)
+// UsersCreateWithBodyWithResponse request with arbitrary body returning *UsersCreateResponse
+func (c *ClientWithResponses) UsersCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UsersCreateResponse, error) {
+	rsp, err := c.UsersCreateWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsCreateResponse(rsp)
+	return ParseUsersCreateResponse(rsp)
 }
 
-func (c *ClientWithResponses) WidgetsCreateWithResponse(ctx context.Context, body WidgetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*WidgetsCreateResponse, error) {
-	rsp, err := c.WidgetsCreate(ctx, body, reqEditors...)
+func (c *ClientWithResponses) UsersCreateWithResponse(ctx context.Context, body UsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*UsersCreateResponse, error) {
+	rsp, err := c.UsersCreate(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsCreateResponse(rsp)
+	return ParseUsersCreateResponse(rsp)
 }
 
-// WidgetsDeleteWithResponse request returning *WidgetsDeleteResponse
-func (c *ClientWithResponses) WidgetsDeleteWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsDeleteResponse, error) {
-	rsp, err := c.WidgetsDelete(ctx, id, reqEditors...)
+// UsersDeleteWithResponse request returning *UsersDeleteResponse
+func (c *ClientWithResponses) UsersDeleteWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersDeleteResponse, error) {
+	rsp, err := c.UsersDelete(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsDeleteResponse(rsp)
+	return ParseUsersDeleteResponse(rsp)
 }
 
-// WidgetsReadWithResponse request returning *WidgetsReadResponse
-func (c *ClientWithResponses) WidgetsReadWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsReadResponse, error) {
-	rsp, err := c.WidgetsRead(ctx, id, reqEditors...)
+// UsersReadWithResponse request returning *UsersReadResponse
+func (c *ClientWithResponses) UsersReadWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersReadResponse, error) {
+	rsp, err := c.UsersRead(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsReadResponse(rsp)
+	return ParseUsersReadResponse(rsp)
 }
 
-// WidgetsUpdateWithBodyWithResponse request with arbitrary body returning *WidgetsUpdateResponse
-func (c *ClientWithResponses) WidgetsUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*WidgetsUpdateResponse, error) {
-	rsp, err := c.WidgetsUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+// UsersUpdateWithBodyWithResponse request with arbitrary body returning *UsersUpdateResponse
+func (c *ClientWithResponses) UsersUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UsersUpdateResponse, error) {
+	rsp, err := c.UsersUpdateWithBody(ctx, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsUpdateResponse(rsp)
+	return ParseUsersUpdateResponse(rsp)
 }
 
-func (c *ClientWithResponses) WidgetsUpdateWithApplicationMergePatchPlusJSONBodyWithResponse(ctx context.Context, id string, body WidgetsUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*WidgetsUpdateResponse, error) {
-	rsp, err := c.WidgetsUpdateWithApplicationMergePatchPlusJSONBody(ctx, id, body, reqEditors...)
+func (c *ClientWithResponses) UsersUpdateWithApplicationMergePatchPlusJSONBodyWithResponse(ctx context.Context, id string, body UsersUpdateApplicationMergePatchPlusJSONRequestBody, reqEditors ...RequestEditorFn) (*UsersUpdateResponse, error) {
+	rsp, err := c.UsersUpdateWithApplicationMergePatchPlusJSONBody(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsUpdateResponse(rsp)
+	return ParseUsersUpdateResponse(rsp)
 }
 
-// WidgetsAnalyzeWithResponse request returning *WidgetsAnalyzeResponse
-func (c *ClientWithResponses) WidgetsAnalyzeWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*WidgetsAnalyzeResponse, error) {
-	rsp, err := c.WidgetsAnalyze(ctx, id, reqEditors...)
+// UsersGetProfileWithResponse request returning *UsersGetProfileResponse
+func (c *ClientWithResponses) UsersGetProfileWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*UsersGetProfileResponse, error) {
+	rsp, err := c.UsersGetProfile(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseWidgetsAnalyzeResponse(rsp)
+	return ParseUsersGetProfileResponse(rsp)
 }
 
-// ParseWidgetsListResponse parses an HTTP response from a WidgetsListWithResponse call
-func ParseWidgetsListResponse(rsp *http.Response) (*WidgetsListResponse, error) {
+// ParseUsersListResponse parses an HTTP response from a UsersListWithResponse call
+func ParseUsersListResponse(rsp *http.Response) (*UsersListResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsListResponse{
+	response := &UsersListResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WidgetList
+		var dest UserList
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -730,22 +730,22 @@ func ParseWidgetsListResponse(rsp *http.Response) (*WidgetsListResponse, error) 
 	return response, nil
 }
 
-// ParseWidgetsCreateResponse parses an HTTP response from a WidgetsCreateWithResponse call
-func ParseWidgetsCreateResponse(rsp *http.Response) (*WidgetsCreateResponse, error) {
+// ParseUsersCreateResponse parses an HTTP response from a UsersCreateWithResponse call
+func ParseUsersCreateResponse(rsp *http.Response) (*UsersCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsCreateResponse{
+	response := &UsersCreateResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Widget
+		var dest User
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -763,15 +763,15 @@ func ParseWidgetsCreateResponse(rsp *http.Response) (*WidgetsCreateResponse, err
 	return response, nil
 }
 
-// ParseWidgetsDeleteResponse parses an HTTP response from a WidgetsDeleteWithResponse call
-func ParseWidgetsDeleteResponse(rsp *http.Response) (*WidgetsDeleteResponse, error) {
+// ParseUsersDeleteResponse parses an HTTP response from a UsersDeleteWithResponse call
+func ParseUsersDeleteResponse(rsp *http.Response) (*UsersDeleteResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsDeleteResponse{
+	response := &UsersDeleteResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -789,22 +789,22 @@ func ParseWidgetsDeleteResponse(rsp *http.Response) (*WidgetsDeleteResponse, err
 	return response, nil
 }
 
-// ParseWidgetsReadResponse parses an HTTP response from a WidgetsReadWithResponse call
-func ParseWidgetsReadResponse(rsp *http.Response) (*WidgetsReadResponse, error) {
+// ParseUsersReadResponse parses an HTTP response from a UsersReadWithResponse call
+func ParseUsersReadResponse(rsp *http.Response) (*UsersReadResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsReadResponse{
+	response := &UsersReadResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Widget
+		var dest User
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -822,22 +822,22 @@ func ParseWidgetsReadResponse(rsp *http.Response) (*WidgetsReadResponse, error) 
 	return response, nil
 }
 
-// ParseWidgetsUpdateResponse parses an HTTP response from a WidgetsUpdateWithResponse call
-func ParseWidgetsUpdateResponse(rsp *http.Response) (*WidgetsUpdateResponse, error) {
+// ParseUsersUpdateResponse parses an HTTP response from a UsersUpdateWithResponse call
+func ParseUsersUpdateResponse(rsp *http.Response) (*UsersUpdateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsUpdateResponse{
+	response := &UsersUpdateResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Widget
+		var dest User
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -855,22 +855,22 @@ func ParseWidgetsUpdateResponse(rsp *http.Response) (*WidgetsUpdateResponse, err
 	return response, nil
 }
 
-// ParseWidgetsAnalyzeResponse parses an HTTP response from a WidgetsAnalyzeWithResponse call
-func ParseWidgetsAnalyzeResponse(rsp *http.Response) (*WidgetsAnalyzeResponse, error) {
+// ParseUsersGetProfileResponse parses an HTTP response from a UsersGetProfileWithResponse call
+func ParseUsersGetProfileResponse(rsp *http.Response) (*UsersGetProfileResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &WidgetsAnalyzeResponse{
+	response := &UsersGetProfileResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AnalyzeResult
+		var dest UserProfile
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
